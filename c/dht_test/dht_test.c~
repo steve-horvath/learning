@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+int loop_print(int counter)
+{
+	printf("Running loop, for run number %d\n",counter);
+	return counter;
+}
+
+int randnumgen()
+{
+	int rand_number=0;
+	rand_number = rand() % 100;
+	printf("Generated Random number %d\n",rand_number);
+	return rand_number;
+}
+
+void print_loop(int a, int randnumber0, int randnumber1, int *dht_return)
+{
+        printf("A = %d\n", a);
+        printf("randnumber0= %i \n", randnumber0);
+        printf("randnumber1= %i \n", randnumber1);
+        printf("dht_return[0]= %i \n", dht_return[0]);
+        printf("dht_return[1]= %i \n", dht_return[1]);
+
+}
+
+
+void main()
+{
+	int a = 0;
+	int loopctr = 0;
+	while( a < 5 ) 
+	{
+		int randnumber0 = 0;
+		int randnumber1 = 0;
+
+		randnumber0 = randnumgen();
+		randnumber1 = randnumgen();
+
+
+                int dht_return[2] ={0,0};
+
+                dht_return[0] = randnumber0;
+                dht_return[1] = randnumber1;
+
+                print_loop(a, randnumber0, randnumber1, dht_return);
+
+//    		printf("A = %d\n", a);
+//              printf("randnumber0= %i \n", randnumber0);
+//              printf("randnumber1= %i \n", randnumber1);
+//              printf("dht_return[0]= %i \n", dht_return[0]);
+//              printf("dht_return[1]= %i \n", dht_return[1]);
+
+
+		loopctr = loop_print(a);
+		a++;
+	}
+
+//        return 0;
+}
+
