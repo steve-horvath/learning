@@ -1,10 +1,5 @@
 #include <stdio.h>
-
-int loop_print(int counter)
-{
-	printf("Running loop, for run number %d\n",counter);
-	return counter;
-}
+#include <stdlib.h>
 
 int randnumgen()
 {
@@ -14,35 +9,35 @@ int randnumgen()
 	return rand_number;
 }
 
-void print_loop(int a, int *dht_return)
+void print_loop(int a, int dht_vals[])
 {
-        printf("printing inside the print function.  \nA = %d\n", a);
-//        printf("randnumber0= %i \n", randnumber0);
-//        printf("randnumber1= %i \n", randnumber1);
-        printf("dht_return[0]= %i \n", dht_return[0]);
-        printf("dht_return[1]= %i \n", dht_return[1]);
+        printf("printing inside the print function.  \nA = %i\n dht_return[0] = %i \n dht_return[1] = %i\n", a, dht_vals[0], dht_vals[1]);
+}
+
+
+int * get_randoms()
+{
+        static int vals[2];
+        vals[0]=randnumgen();
+        vals[1]=randnumgen();
+        return vals;
 }
 
 
 void main()
 {
 	int a = 0;
-	int loopctr = 0;
 	while( a < 5 ) 
 	{
-		int randnumber0 = 0;
-		int randnumber1 = 0;
+                int *dht_return;
 
-		randnumber0 = randnumgen();
-		randnumber1 = randnumgen();
+                dht_return = get_randoms();
 
 
-                int dht_return[2] ={0,0};
-
-                dht_return[0] = randnumber0;
-                dht_return[1] = randnumber1;
-
+//        printf("111 dht_return[0]= %i \n", dht_return[0]);
+//        printf("111 dht_return[1]= %i \n", dht_return[1]);
                 print_loop(a, dht_return);
+
 
 //    		printf("A = %d\n", a);
 //              printf("randnumber0= %i \n", randnumber0);
@@ -51,10 +46,7 @@ void main()
 //              printf("dht_return[1]= %i \n", dht_return[1]);
 
 
-		loopctr = loop_print(a);
 		a++;
 	}
-
-//        return 0;
 }
 
